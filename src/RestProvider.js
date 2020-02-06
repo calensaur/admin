@@ -31,7 +31,7 @@ const RestProvider = (firebaseConfig = {}, options = {}) => {
   const {
     timestampFieldNames,
     trackedResources,
-    initialQuerytimeout
+    initialQuerytimeout,
   } = options;
 
   const resourcesStatus = {};
@@ -73,7 +73,8 @@ const RestProvider = (firebaseConfig = {}, options = {}) => {
       trackedResources[index] = resource;
     }
 
-    const { name, path, uploadFields } = resource;
+    let { name, path, uploadFields } = resource;
+    
     if (!resource.name) {
       throw new Error(`name is missing from resource ${resource}`);
     }
@@ -161,7 +162,6 @@ const RestProvider = (firebaseConfig = {}, options = {}) => {
     let result = null;
     switch (type) {
       case GET_LIST:
-        // console.log('GET_LIST');
         result = await getList(
           params,
           resourceName,
@@ -174,12 +174,9 @@ const RestProvider = (firebaseConfig = {}, options = {}) => {
           resourceName,
           resourcesData[resourceName]
         );
-        // console.log('GET_MANY');
-        console.log("reselut", result);
         return result;
 
       case GET_MANY_REFERENCE:
-        // console.log('GET_MANY_REFERENCE');
         result = await getMany(
           params,
           resourceName,
@@ -188,7 +185,6 @@ const RestProvider = (firebaseConfig = {}, options = {}) => {
         return result;
 
       case GET_ONE:
-        // console.log('GET_ONE');
         result = await getOne(
           params,
           resourceName,
@@ -197,7 +193,6 @@ const RestProvider = (firebaseConfig = {}, options = {}) => {
         return result;
 
       case DELETE:
-        // console.log('DELETE');
         const uploadFields = resourcesUploadFields[resourceName]
           ? resourcesUploadFields[resourceName]
           : [];
@@ -210,7 +205,6 @@ const RestProvider = (firebaseConfig = {}, options = {}) => {
         return result;
 
       case DELETE_MANY:
-        // console.log('DELETE_MANY');
         result = await delMany(
           params.ids,
           resourceName,
@@ -219,7 +213,6 @@ const RestProvider = (firebaseConfig = {}, options = {}) => {
         return result;
       case UPDATE:
       case CREATE:
-        console.log("UPDATE/CREATE");
         let itemId = getItemID(
           params,
           type,
