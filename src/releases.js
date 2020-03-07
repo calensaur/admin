@@ -42,6 +42,7 @@ export const ReleaseList = props => (
       <TextField source="type" />
       <DateField source="date" />
       <TextField source="width" />
+      <TextField source="percentageWidth" />
       <TextField source="director" />
       <FunctionField
         label="Platforms"
@@ -70,6 +71,7 @@ export const ReleaseEdit = props => (
       />
       <DateInput source="date" />
       <NumberInput source="width" step={10} />
+      <NumberInput source="percentageWidth" step={1} />
       <TextInput source="director" />
       <SelectArrayInput
         label="Platfoms"
@@ -100,6 +102,7 @@ export const ReleaseCreate = props => (
       />
       <DateInput source="date" />
       <NumberInput source="width" step={10} />
+      <NumberInput source="percentageWidth" step={1} />
       <TextInput source="director" />
       <SelectArrayInput
         label="Platfoms"
