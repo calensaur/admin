@@ -44,6 +44,7 @@ export const ReleaseList = props => (
       <TextField source="width" />
       <TextField source="percentageWidth" />
       <TextField source="director" />
+      <TextField source="description" />
       <FunctionField
         label="Platforms"
         render={record =>
@@ -83,6 +84,7 @@ export const ReleaseEdit = props => (
           { id: "nintendo_switch", name: "Nintendo Switch" }
         ]}
       />
+      <TextInput source="description" />
     </SimpleForm>
   </Edit>
 );
@@ -114,6 +116,7 @@ export const ReleaseCreate = props => (
           { id: "nintendo_switch", name: "Nintendo Switch" }
         ]}
       />
+      <TextInput source="description" />
     </SimpleForm>
   </Create>
 );
