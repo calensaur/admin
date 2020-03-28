@@ -16,7 +16,9 @@ import {
   Filter,
   Create,
   DeleteButton,
-  ImageField
+  ImageField,
+  BooleanInput,
+  BooleanField,
 } from "react-admin";
 
 import CustomImageField from './components/ImageField'
@@ -27,7 +29,8 @@ const ReleaseFilter = props => (
       source="type"
       choices={[
         { id: "film", name: "Film" },
-        { id: "game", name: "Game" }
+        { id: "game", name: "Game" },
+        { id: "series", name: "Series" },
       ]}
       alwaysOn
     />
@@ -51,6 +54,8 @@ export const ReleaseList = props => (
           Array.isArray(record.platforms) ? record.platforms.join(", ") : ""
         }
       />
+      <TextField source="season" />
+      <BooleanField source="isModerated" />
       <EditButton label="" />
       <DeleteButton label="" redirect={false} />
     </Datagrid>
@@ -67,7 +72,8 @@ export const ReleaseEdit = props => (
         source="type"
         choices={[
           { id: "film", name: "Film" },
-          { id: "game", name: "Game" }
+          { id: "game", name: "Game" },
+          { id: "series", name: "Series" },
         ]}
       />
       <DateInput source="date" />
@@ -84,7 +90,19 @@ export const ReleaseEdit = props => (
           { id: "nintendo_switch", name: "Nintendo Switch" }
         ]}
       />
+      <SelectArrayInput
+        label="Platfoms"
+        source="platforms"
+        choices={[
+          { id: "pc", name: "PC" },
+          { id: "xbox_one", name: "X-One" },
+          { id: "ps_4", name: "PS 4" },
+          { id: "nintendo_switch", name: "Nintendo Switch" }
+        ]}
+      />
+      <NumberInput source="season" step={1} />
       <TextInput source="description" />
+      <BooleanInput label="Moderated" source="isModerated" />
     </SimpleForm>
   </Edit>
 );
@@ -99,7 +117,8 @@ export const ReleaseCreate = props => (
         source="type"
         choices={[
           { id: "film", name: "Film" },
-          { id: "game", name: "Game" }
+          { id: "game", name: "Game" },
+          { id: "series", name: "Series" },
         ]}
       />
       <DateInput source="date" />
@@ -116,7 +135,9 @@ export const ReleaseCreate = props => (
           { id: "nintendo_switch", name: "Nintendo Switch" }
         ]}
       />
+      <NumberInput source="season" step={1} />
       <TextInput source="description" />
+      <BooleanInput label="Moderated" source="isModerated" />
     </SimpleForm>
   </Create>
 );
