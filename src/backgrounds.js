@@ -24,7 +24,8 @@ const BackgroundsFilter = props => (
       source="type"
       choices={[
         { id: "film", name: "Film" },
-        { id: "game", name: "Game" }
+        { id: "game", name: "Game" },
+        { id: "series", name: "Series" }
       ]}
       alwaysOn
     />
@@ -51,7 +52,8 @@ export const BackgroundsEdit = props => (
         source="type"
         choices={[
           { id: "film", name: "Film" },
-          { id: "game", name: "Game" }
+          { id: "game", name: "Game" },
+          { id: "series", name: "Series" }
         ]}
       />
       <CustomImageField name="cover" label="Cover" />
@@ -68,7 +70,8 @@ export const BackgroundsCreate = props => (
         source="type"
         choices={[
           { id: "film", name: "Film" },
-          { id: "game", name: "Game" }
+          { id: "game", name: "Game" },
+          { id: "series", name: "Series" }
         ]}
       />
       <DateInput source="date" />
